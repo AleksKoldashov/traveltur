@@ -13,7 +13,7 @@ function App() {
   console.log(data);
   return (
     <>
-      <h1 className="primary-color">Travel Tur 1</h1>
+      <h1 className="primary-color">Travel Tur 1 sasdadadfa</h1>
       <div>{data?.data?.hotels?.length}</div>
       <Test />
     </>
