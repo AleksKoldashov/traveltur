@@ -26,7 +26,10 @@ apiClient.interceptors.request.use(
 export default {
   hotels: {
     number_of_hotels(request: NumberOfHotelsRequest) {
-      return apiClient.get('hotels.json', { params: request });
+      return apiClient.get('static/hotels.json', { params: request });
+    },
+    search_name_location(request: unknown) {
+      return apiClient.get('lookup.json', { params: request });
     },
   },
 };
