@@ -27,7 +27,7 @@ export default {
   hotels: {
     number_of_hotels(request: NumberOfHotelsRequest) {
       return apiClient.get(
-        'http://engine.hotellook.com/api/v2/static/hotels.json',
+        'https://engine.hotellook.com/api/v2/static/hotels.json',
         { params: request }
       );
     },
