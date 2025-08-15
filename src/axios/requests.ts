@@ -26,7 +26,7 @@ apiClient.interceptors.request.use(
 export default {
   hotels: {
     number_of_hotels(request: NumberOfHotelsRequest) {
-      return apiClient.get('static/hotels.json', { params: request });
+      return apiClient.get('hotels.json', { params: request });
     },
   },
 };
