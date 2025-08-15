@@ -20,19 +20,68 @@ jobs:
     environment: github-pages
     steps:
       - uses: actions/checkout@v4
-      - name: Create .env.prod file
+
+      # Создаем .env файл с секретами
+      - name: Create .env file
         run: |
-          echo "VITE_API_URL=${{ secrets.VITE_API_KEY }}" >> .env.prod
-          echo "VITE_API_TOKEN=${{ secrets.VITE_OTHER_SECRET }}" >> .env.prod
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
+          echo "VITE_API_TOKEN=${{ secrets.VITE_API_TOKEN }}" >> .env
+          # Для отладки (опционально):
+          cat .env
+
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: 'npm'
+
       - run: npm ci
-      - run: npm run build:prod
+      - run: npm run build
+
+      # Проверяем, что переменные подставились (опционально)
+      - name: Debug build output
+        run: |
+          grep -r "VITE_API_URL" ./dist/ || echo "Variable not found in build"
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
+# name: Deploy static content to Pages
+
+# on:
+#   push:
+#     branches: [main]
+#   workflow_dispatch:
+
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
+
+# concurrency:
+#   group: 'pages'
+#   cancel-in-progress: true
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     environment: github-pages
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Create .env file
+#         run: |
+#           echo "VITE_API_URL=${{ secrets.VITE_API_KEY }}" >> .env
+#           echo "VITE_API_TOKEN=${{ secrets.VITE_OTHER_SECRET }}" >> .env
+#       - uses: actions/setup-node@v4
+#         with:
+#           node-version: lts/*
+#           cache: 'npm'
+#       - run: npm ci
+#       - run: npm run build
+#       - uses: actions/configure-pages@v5
+#       - uses: actions/upload-pages-artifact@v3
+#         with:
+#           path: './dist'
+#       - id: deployment
+#         uses: actions/deploy-pages@v4

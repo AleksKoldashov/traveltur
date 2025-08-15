@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { NumberOfHotelsRequest } from './types';
 
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  // baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -26,7 +26,10 @@ apiClient.interceptors.request.use(
 export default {
   hotels: {
     number_of_hotels(request: NumberOfHotelsRequest) {
-      return apiClient.get('hotels.json', { params: request });
+      return apiClient.get(
+        'http://engine.hotellook.com/api/v2/static/hotels.json',
+        { params: request }
+      );
     },
   },
 };

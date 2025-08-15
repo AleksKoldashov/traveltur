@@ -10,6 +10,7 @@ function App() {
         locationId: 895,
       }),
   });
+  console.log('API URL:', import.meta.env.VITE_API_URL);
   console.log(data);
   return (
     <>

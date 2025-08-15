@@ -9,6 +9,7 @@
     "build": "tsc -b && vite build",
     "build:prod": "vite build --base=/traveltur/",
     "preview": "vite preview",
+    "preview:prod": "cross-env VITE_API_URL=$VITE_API_URL VITE_API_TOKEN=$VITE_API_TOKEN vite preview",
     "lint": "eslint . --ext .ts,.tsx --max-warnings=0",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss}\""
@@ -26,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",
     "@vitejs/plugin-react": "^5.0.0",
+    "cross-env": "^10.0.0",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
