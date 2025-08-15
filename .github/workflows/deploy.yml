@@ -17,14 +17,19 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - uses: actions/checkout@v4
+      - name: Create .env.prod file
+        run: |
+          echo "VITE_API_URL=${{ secrets.VITE_API_KEY }}" >> .env.prod
+          echo "VITE_API_TOKEN=${{ secrets.VITE_OTHER_SECRET }}" >> .env.prod
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: 'npm'
       - run: npm ci
-      - run: npm run build
+      - run: npm run build:prod
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
