@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:mode": "vite --host --mode dev",
     "build": "tsc -b && vite build",
-    "build:prod": "vite build --mode prod",
+    "build:prod": "vite build --base=/traveltur/",
     "preview": "vite preview",
     "lint": "eslint . --ext .ts,.tsx --max-warnings=0",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
