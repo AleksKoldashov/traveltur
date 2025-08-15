@@ -28,6 +28,7 @@ function App() {
   return (
     <>
       <h1 className="primary-color">Travel Tur 1 sasdadadfa</h1>
+      <h1 className="primary-color">hotel</h1>
       <div>{data?.data?.hotels?.length}</div>
       <Test />
     </>
