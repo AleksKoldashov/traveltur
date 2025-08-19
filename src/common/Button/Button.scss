@@ -1,0 +1,36 @@
+.btn {
+  padding: 8px 24px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Bitter', serif;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  &.primary {
+    background-color: var(--gold);
+    color: var(--white);
+    &:hover {
+      background-color: var(--gold_hover);
+    }
+  }
+  &.secondary {
+    background-color: var(--gold_light);
+    color: var(--black);
+    &:hover {
+      background-color: var(--gold_light_hover);
+    }
+  }
+  &.tertiary {
+    background-color: var(--gold);
+    color: var(--white);
+    border-radius: 22px;
+    &:hover {
+      background-color: var(--gold_hover);
+    }
+  }
+}
